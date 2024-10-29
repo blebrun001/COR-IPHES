@@ -32,24 +32,13 @@
 
 							<!-- Content -->
 								<section>
-
-                                    <script type="text/javascript" src="assets/js/o3dv.min.js"></script>
-                                    
-                                    <div id="viewer-container" style="width: 100%; height: 500px;"></div>
-
-                                        <script>
-                                            const viewer = new EmbeddedViewer(document.getElementById('viewer-container'), {
-                                                backgroundColor: [255, 255, 255],  // Optionnel, couleur du fond
-                                            });
-                                            viewer.LoadModelFromUrlList(['assets/3Dfiles/test09.obj']);
-                                        </script>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
+									<!-- 3D Viewer Container -->
+									<div class="box alt">
+										<div id="viewer-container" style="width: 100%; height: 500px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+											<div class="online_3d_viewer" style="width: 100%; height: 100%;" model="test09.obj, test09.mtl"></div>
+										</div>
+									</div>
+									
                                     
 								</section>
 						</div>
@@ -73,7 +62,11 @@
 									</header>
 									<ul>
 										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">The project</a></li>
+										<li><a href="presentation.html">Presentation</a></li>
+										<li><a href="theCollection.html">The Collection</a></li>
+										<li><a href="contribute.html">Contribute</a></li>
+										<li><a href="theTeam.html">The Team</a></li>
+										<li><a href="contact.html">Contact</a></li>
 									</ul>
 								</nav>
 
@@ -91,10 +84,14 @@
 									</ul>
 								</section>
 
+
+
+
 							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; All rights reserved.
-                                </footer>
+                                
+									</footer>
 
 						</div>
 					</div>
@@ -107,6 +104,11 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script src="node_modules/online-3d-viewer/build/engine/o3dv.min.js"></script>
+			<script>
+				window.addEventListener('load', () => {
+					OV.Init3DViewerElements();
+				});
+			</script>
 	</body>
 </html>

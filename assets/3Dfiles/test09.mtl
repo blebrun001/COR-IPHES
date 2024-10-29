@@ -1,0 +1,20 @@
+# Apple ModelI/O MTL File: test09.mtl
+
+newmtl Texture
+	map_Kd 0/baked_mesh_ba85d102_tex0.png
+	Kd 0.18 0.18 0.18
+	Ka 0 0 0
+	Ks 0
+	map_ao 0/baked_mesh_ba85d102_ao0.png
+	ao 0
+	subsurface 0
+	metallic 0
+	specularTint 0
+	map_roughness 0/baked_mesh_ba85d102_roughness0.png
+	anisotropicRotation 0
+	sheen 0.05
+	sheenTint 0
+	clearCoat 0
+	clearCoatGloss 0.99
+	map_tangentSpaceNormal 0/baked_mesh_ba85d102_norm0.png
+
