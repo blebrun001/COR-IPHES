@@ -36,8 +36,7 @@
 					<div class="box alt">
 						<div id="viewer-container"
 							style="width: 100%; height: 500px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-							<div class="online_3d_viewer" style="width: 100%; height: 100%;"
-								model="test09.obj, test09.mtl"></div>
+							<div class="online_3d_viewer" style="width: 100%; height: 100%;" id="viewer"></div>
 						</div>
 					</div>
 				</section>
@@ -96,8 +95,24 @@
 	<script src="assets/online-3d-viewer/build/engine/o3dv.min.js"></script>
 	<script>
 		window.addEventListener('load', () => {
-			OV.Init3DViewerElements();
+			let parentDiv = document.getElementById('viewer');
+			let viewer = new OV.EmbeddedViewer(parentDiv, {
+				backgroundColor: new OV.RGBAColor(215, 219, 197, 50),
+				// edgeSettings: new OV.EdgeSettings(true, new OV.RGBColor(255, 255, 0), 15), //High contrast mode
+			});
+
+			// load a model providing model urls
+			const base_dir = "assets\\3Dfiles\\ilium\\";
+			viewer.LoadModelFromUrlList([
+				base_dir+"illium.obj", 
+				base_dir+"illium.mtl", 
+				base_dir+"0\\baked_mesh_7356aaa7_ao0.png",
+				base_dir+"0\\baked_mesh_7356aaa7_norm0.png",
+				base_dir+"0\\baked_mesh_7356aaa7_roughness0.png",
+				base_dir+"0\\baked_mesh_7356aaa7_tex0.png",
+			]);
 		});
 	</script>
 </body>
+
 </html>
