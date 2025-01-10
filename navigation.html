@@ -1,118 +1,103 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
-	<title>COR-IPHES digital repository</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+    <title>COR-IPHES Digital Repository</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <body class="is-preload">
-	<!-- Wrapper -->
-	<div id="wrapper">
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-				<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo"><strong>COR-IPHES </strong>Digital Repository</a>
-					<ul class="icons">
-						<li><a href="https://x.com/iphes" class="icon brands fa-twitter" target="_blank"><span
-									class="label">Twitter</span></a></li>
-						<li><a href="https://www.facebook.com/ton_profil_facebook" class="icon brands fa-facebook-f"
-								target="_blank"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/iphes_cerca/" class="icon brands fa-instagram"
-								target="_blank"><span class="label">Instagram</span></a></li>
-					</ul>
-				</header>
-				<!-- Content -->
-				<section>
-					<!-- 3D Viewer Container -->
-					<div class="box alt">
-						<div id="viewer-container"
-							style="width: 100%; height: 500px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-							<div class="online_3d_viewer" style="width: 100%; height: 100%;" id="viewer"></div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
-				<!-- Search -->
-				<section id="search" class="alt">
-					<form method="post" action="#">
-						<input type="text" name="query" id="query" placeholder="Search" />
-					</form>
-				</section>
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>Menu</h2>
-					</header>
-					<ul>
-						<li><a href="index.html">Homepage</a></li>
-						<li><a href="presentation.html">Presentation</a></li>
-						<li><a href="theCollection.html">The Collection</a></li>
-						<li><a href="contribute.html">Contribute</a></li>
-						<li><a href="theTeam.html">The Team</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</nav>
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>Get in touch</h2>
-					</header>
-					<p>The project is developped and maintened by the Institut Català de Paleoecologia Humana i Evolució
-						Social.</p>
-					<ul class="contact">
-						<li class="icon solid fa-envelope"><a href="#">info@iphes.cat</a></li>
-						<li class="icon solid fa-phone">(+34) 977 943 003</li>
-						<li class="icon solid fa-home">Zona Educacional 4 - Campus Sescelades URV (Edifici W3)<br />
-							43007 - TARRAGONA</li>
-					</ul>
-				</section>
-				<!-- Footer -->
-				<footer id="footer">
-					<p class="copyright">&copy; All rights reserved.
-				</footer>
-			</div>
-		</div>
-	</div>
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/online-3d-viewer/build/engine/o3dv.min.js"></script>
-	<script>
-		window.addEventListener('load', () => {
-			let parentDiv = document.getElementById('viewer');
-			let viewer = new OV.EmbeddedViewer(parentDiv, {
-				backgroundColor: new OV.RGBAColor(215, 219, 197, 50),
-				// edgeSettings: new OV.EdgeSettings(true, new OV.RGBColor(255, 255, 0), 15), //High contrast mode
-			});
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>COR-IPHES</strong> Digital Repository</a>
+                    <ul class="icons">
+                        <li><a href="https://x.com/iphes" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.facebook.com/ton_profil_facebook" class="icon brands fa-facebook-f" target="_blank"><span class="label">Facebook</span></a></li>
+                        <li><a href="https://www.instagram.com/iphes_cerca/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                    </ul>
+                </header>
+                <!-- Content -->
+                <section>
+                    <!-- 3D Viewer Container -->
+                    <div class="box alt">
+                        <div id="viewer-container" style="width: 100%; height: 500px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <canvas id="viewer"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
 
-			// load a model providing model urls
-			const base_dir = "assets\\3Dfiles\\ilium\\";
-			viewer.LoadModelFromUrlList([
-				base_dir+"illium.obj", 
-				base_dir+"illium.mtl", 
-				base_dir+"0\\baked_mesh_7356aaa7_ao0.png",
-				base_dir+"0\\baked_mesh_7356aaa7_norm0.png",
-				base_dir+"0\\baked_mesh_7356aaa7_roughness0.png",
-				base_dir+"0\\baked_mesh_7356aaa7_tex0.png",
-			]);
-		});
-	</script>
+    <script>
+        // Variables globales
+        let scene, camera, renderer, controls;
+
+        // Initialisation
+        function init() {
+            // Créer la scène
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf0f0f0);
+
+            // Ajouter une caméra
+            const fov = 75;
+            const aspect = window.innerWidth / 500; // Largeur / Hauteur du container
+            const near = 0.1;
+            const far = 1000;
+            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(0, 0, 5);
+
+            // Créer le renderer
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('viewer') });
+            renderer.setSize(window.innerWidth, 500);
+
+            // Ajouter OrbitControls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.screenSpacePanning = false;
+            controls.maxPolarAngle = Math.PI / 2;
+
+            // Ajouter une lumière
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(5, 5, 5).normalize();
+            scene.add(light);
+
+            // Charger un modèle simple (cube)
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            // Commencer l'animation
+            animate();
+        }
+
+        // Fonction d'animation
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // Ajuster le rendu au redimensionnement
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / 500;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, 500);
+        });
+
+        // Initialisation au chargement de la page
+        window.onload = init;
+    </script>
 </body>
-
 </html>
