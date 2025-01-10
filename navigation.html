@@ -26,19 +26,44 @@
                 <section>
                     <!-- 3D Viewer Container -->
                     <div class="box alt">
-                        <div id="viewer-container" style="width: 100%; height: 500px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                            <canvas id="viewer"></canvas>
-                        </div>
+                        <div id="viewer-container"
+							style="width: 100%; height: 500px; border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+							<div class="online_3d_viewer" style="width: 100%; height: 100%;" id="viewer"></div>
+						</div>
                     </div>
                 </section>
             </div>
         </div>
     </div>
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+    <!-- <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script> -->
 
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/online-3d-viewer/build/engine/o3dv.min.js"></script>
     <script>
+		window.addEventListener('load', () => {
+			let parentDiv = document.getElementById('viewer');
+			let viewer = new OV.EmbeddedViewer(parentDiv, {
+				backgroundColor: new OV.RGBAColor(215, 219, 197, 50),
+				// edgeSettings: new OV.EdgeSettings(true, new OV.RGBColor(255, 255, 0), 15), //High contrast mode
+			});
+            const base_dir = "assets\\3Dfiles\\ilium\\";
+			viewer.LoadModelFromUrlList([
+				base_dir+"illium.obj", 
+				base_dir+"illium.mtl", 
+				base_dir+"0\\baked_mesh_7356aaa7_ao0.png",
+				base_dir+"0\\baked_mesh_7356aaa7_norm0.png",
+				base_dir+"0\\baked_mesh_7356aaa7_roughness0.png",
+				base_dir+"0\\baked_mesh_7356aaa7_tex0.png",
+			]);
+		});
+	</script>
+    <!-- <script>
         // Variables globales
         let scene, camera, renderer, controls;
 
@@ -98,6 +123,6 @@
 
         // Initialisation au chargement de la page
         window.onload = init;
-    </script>
+    </script> -->
 </body>
 </html>
